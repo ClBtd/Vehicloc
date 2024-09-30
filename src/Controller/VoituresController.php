@@ -31,4 +31,13 @@ class VoituresController extends AbstractController
             'voiture' => $voiture,
         ]);
     }
+
+    #[Route('/{id}/remove', name: 'voitures_remove', requirements: ['id' => '\d+'])]
+    public function remove(Voitures $voiture,EntityManagerInterface $em): Response
+    {
+        $em->remove($voiture);
+        $em->flush();
+
+        return $this->redirectToRoute('voitures');
+    }    
 }
