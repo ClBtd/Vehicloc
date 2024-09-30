@@ -8,7 +8,6 @@
 
     <section id="car">
         <a href="{{path('voitures')}}">← Retour</a>
-        {% if editor is not null %}
         <h1>{{voiture.name}}</h1>
         
         <p class="description-car">{{voiture.description}}</p>
@@ -28,9 +27,9 @@
         
         <div class="total-rent">
             <span>Total</span>
-            <span>{{ voiture.monthly_price | number_format(2, ',', ' ') }}/mois</span>
+            <span>{{ voiture.MonthlyPrice | number_format(2, ',', ' ') }}/mois</span>
         </div>
-        <button class="btn-add">Louer pour {{ voiture.monthly_price | number_format(2, ',', ' ') }}€/mois</button> 
+        <button class="btn-add">Louer pour {{ voiture.MonthlyPrice | number_format(2, ',', ' ') }}€/mois</button> 
     </section>
 
     <section id="insurances">
@@ -49,9 +48,6 @@
                 <p><img src="assets/icons/checked.png" alt="" /> Protection pneus et vitres.</p>
             </div>
         </div>
-        {% else %}
-            <div>Cette voiture n'existe pas.</div>
-        {% endif %}
     </section>
 
 </div>

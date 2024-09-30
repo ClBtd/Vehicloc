@@ -10,11 +10,11 @@
         <h2>Découvrez la flotte de véhicules chez Véhicloc</h2>
         <p>Que vous ayez besoin d'une petite citadine agile, d'une berline élégante ou même d'un SUV spacieux, nous avons une variété de véhicules  pour répondre à vos exigences.</p>
         <div class="fleet-list">
-            {% for voiture as voitures %}
+            {% for voiture in voitures %}
             <article>
                 <div class="mini-car-title">
                     <a href="{{ path('voitures_show', {id: voiture.id}) }}">
-                        <h3>{{voitures.name}}</h3>
+                        <h3>{{voiture.name}}</h3>
                         <p>ou similaire | Saint-Étienne</p>
                     </a>
                     <div>
@@ -23,12 +23,12 @@
                 </div>
                 <div class="mini-car-icons">
                     <div>
-                        <img src="assets/icons/persons.png" alt="{{voitures.places}} places" />
-                        <p>{{voitures.places}} places</p>
+                        <img src="assets/icons/persons.png" alt="{{voiture.places}} places" />
+                        <p>{{voiture.places}} places</p>
                     </div>
                     <div>
-                        <img src="assets/icons/motor.png" alt="{{ voiture.manuelle ? 'Manuelle' : 'Automatique' }}" />
-                        <p>"{{ voiture.manuelle ? 'Manuelle' : 'Automatique' }}"</p>
+                        <img src="assets/icons/motor.png" alt="{{ voiture.motor ? 'Manuelle' : 'Automatique' }}" />
+                        <p>"{{ voiture.motor ? 'Manuelle' : 'Automatique' }}"</p>
                     </div>
                     <div>
                         <img src="assets/icons/km.png" alt="km illimités" />
@@ -40,8 +40,8 @@
                     </div>
                 </div>
                 <div class="mini-car-price">
-                    <p class="price-per-day">{{ voiture.daily_price | number_format(2, ',', ' ') }} € / jour</p>
-                    <p class="price-per-month">{{ voiture.monthly_price | number_format(2, ',', ' ') }} € / mois</p>
+                    <p class="price-per-day">{{ voiture.DailyPrice | number_format(2, ',', ' ') }} € / jour</p>
+                    <p class="price-per-month">{{ voiture.MonthlyPrice | number_format(2, ',', ' ') }} € / mois</p>
                 </div>
             </article>
             {% endfor %}        

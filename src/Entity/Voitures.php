@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\VoituresRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VoituresRepository::class)]
 class Voitures
@@ -14,21 +15,32 @@ class Voitures
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\Length(min: 5)]
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[Assert\Length(min: 50)]
+    #[Assert\NotBlank()]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column]
-    private ?int $monthly_price = null;
+    private ?float $monthly_price = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column]
-    private ?int $daily_price = null;
+    private ?float $daily_price = null;
 
+    #[Assert\GreaterThan(0)]
+    #[Assert\LessThan(10)]
+    #[Assert\NotBlank()]
     #[ORM\Column]
     private ?int $places = null;
 
+    #[Assert\Type('bool')]
+    #[Assert\NotBlank()]
     #[ORM\Column]
     private ?bool $motor = null;
 
@@ -68,24 +80,24 @@ class Voitures
         return $this;
     }
 
-    public function getMonthlyPrice(): ?int
+    public function getMonthlyPrice(): ?float
     {
         return $this->monthly_price;
     }
 
-    public function setMonthlyPrice(int $monthly_price): static
+    public function setMonthlyPrice(float $monthly_price): static
     {
         $this->monthly_price = $monthly_price;
 
         return $this;
     }
 
-    public function getDailyPrice(): ?int
+    public function getDailyPrice(): ?float
     {
         return $this->daily_price;
     }
 
-    public function setDailyPrice(int $daily_price): static
+    public function setDailyPrice(float $daily_price): static
     {
         $this->daily_price = $daily_price;
 

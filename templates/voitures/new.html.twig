@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toutes nos voitures{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    <h1>Ajouter une voiture</h1>
+
+    <div class="form">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+            <button type="submit">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+
+</div>
+
+{% endblock %}
